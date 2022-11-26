@@ -1,9 +1,9 @@
 import Reat, { lazy } from "react"
 import Home from "../views/Home"
-const About = lazy(() => import("../views/About"))
 const User = lazy(() => import("../views/User"))
 const Page1 = lazy(() => import("../views/Page1"))
 const Page2 = lazy(() => import("../views/Page2"))
+const Page301 = lazy(() => import("../views/Page301"))
 
 const withLoadingComponent = (comp: JSX.Element) => (
     <Reat.Suspense fallback={<div>loading……</div>}>
@@ -30,14 +30,18 @@ const routes = [
                 element: withLoadingComponent(<Page2 />)
             },
             {
-                path: "/about",
-                element: withLoadingComponent(<About />)
+                path: "/page3/page301",
+                element: withLoadingComponent(<Page301 />)
             },
             {
                 path: "/user",
                 element: withLoadingComponent(<User />)
             },
         ]
+    },
+    {
+        path: "*",
+        element: <Navigate to="/page1" />
     }
 
 
